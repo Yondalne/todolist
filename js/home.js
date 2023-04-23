@@ -31,5 +31,29 @@ function toggleSidebar () {
 }
 
 let closeSidebar = document.querySelector(".sidebar .close");
-
 closeSidebar.addEventListener("click", () => toggleSidebar());
+
+
+let addTask = document.querySelector(".addTask");
+let modal = document.querySelector(".modal-container");
+let modalContent = document.querySelector(".modal-container .modal");
+
+addTask.addEventListener("click", () => {
+    modal.style.opacity = 1;
+    modal.style.visibility = "visible";
+    setTimeout(()=>{
+        modalContent.style.transform = "translateX(0)";
+    }, 300);
+});
+
+modal.addEventListener("click", (e) => {
+    modalContent.style.transform = "translateX(100%)";
+    setTimeout(()=>{
+        modal.style.opacity = 0;
+        modal.style.visibility = "hidden";
+    }, 300);
+});
+
+modalContent.addEventListener("click", (e) => {
+    e.stopPropagation();
+});
